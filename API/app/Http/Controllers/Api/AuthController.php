@@ -134,7 +134,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request, User $user) 
-    {   
+    {
         $userlogged = User::where('email','=',$request->input('email'))->first();
         if($userlogged){
             return response()->json(['msg'=>'Email já cadastrado!']);

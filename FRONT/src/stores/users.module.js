@@ -12,7 +12,7 @@ const actions = {
 		localStorage.removeItem("user");
 		UserService.loginEmail(payload)
 			.then(data => {
-				context.commit("SET_USER", data.data);
+				context.commit("SET_USER", data.data.user);
 				localStorage.setItem("user", JSON.stringify(data.data.user));
 				localStorage.setItem("access_token", JSON.stringify(data.data.token));
 				router.push("/home");
