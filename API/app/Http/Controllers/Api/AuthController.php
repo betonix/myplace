@@ -72,7 +72,7 @@ class AuthController extends Controller
             $newUser->name = $user['name'];
             $newUser->fb_id = $user['id'];
             $newUser->photo = $user['picture']['data']['url'];
-            $newUser->password = md5(rand(0, 100));
+            $newUser->password = "fuiheifiejfiejf";
             $newUser->save();
             $user =  $newUser;
             $token = JWTAuth::fromUser($user);
