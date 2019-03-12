@@ -134,7 +134,11 @@ class AuthController extends Controller
     }
 
     public function register(Request $request, User $user) 
-    {
+    {   
+        $userlogged = User::where('email','=',$request->input('email'))->first();
+        if($userlogged){
+            return response()->json(['msg'=>'Email já cadastrado!']);
+        }
         $user->create( $request->all() );
         return response()->json(['msg'=>'Usuário criado com sucesso!']);
     }
@@ -150,7 +154,7 @@ class AuthController extends Controller
             $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = 'roberto.o.s.f@gmail.com';                 // SMTP username
-            $mail->Password = '';                           // SMTP password
+            $mail->Password = 'amarnaoepecado';                           // SMTP password
             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;                                    // TCP port to connect to
         
